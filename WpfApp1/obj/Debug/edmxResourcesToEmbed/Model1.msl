@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище ZapKnModelContainer" CdmEntityContainer="ZapKnEntities">
+    <EntitySetMapping Name="email">
+      <EntityTypeMapping TypeName="ZapKnModel.email">
+        <MappingFragment StoreEntitySet="email">
+          <ScalarProperty Name="emailid" ColumnName="emailid" />
+          <ScalarProperty Name="personidfk" ColumnName="personidfk" />
+          <ScalarProperty Name="typeeidfk" ColumnName="typeeidfk" />
+          <ScalarProperty Name="email1" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="person">
+      <EntityTypeMapping TypeName="ZapKnModel.person">
+        <MappingFragment StoreEntitySet="person">
+          <ScalarProperty Name="personid" ColumnName="personid" />
+          <ScalarProperty Name="photoidfk" ColumnName="photoidfk" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="phone">
+      <EntityTypeMapping TypeName="ZapKnModel.phone">
+        <MappingFragment StoreEntitySet="phone">
+          <ScalarProperty Name="phoneid" ColumnName="phoneid" />
+          <ScalarProperty Name="personidfk" ColumnName="personidfk" />
+          <ScalarProperty Name="typepidfk" ColumnName="typepidfk" />
+          <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="photo">
+      <EntityTypeMapping TypeName="ZapKnModel.photo">
+        <MappingFragment StoreEntitySet="photo">
+          <ScalarProperty Name="photoid" ColumnName="photoid" />
+          <ScalarProperty Name="photo1" ColumnName="photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="typeemail">
+      <EntityTypeMapping TypeName="ZapKnModel.typeemail">
+        <MappingFragment StoreEntitySet="typeemail">
+          <ScalarProperty Name="typeeid" ColumnName="typeeid" />
+          <ScalarProperty Name="work" ColumnName="work" />
+          <ScalarProperty Name="personal" ColumnName="personal" />
+          <ScalarProperty Name="another" ColumnName="another" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="typephone">
+      <EntityTypeMapping TypeName="ZapKnModel.typephone">
+        <MappingFragment StoreEntitySet="typephone">
+          <ScalarProperty Name="typepid" ColumnName="typepid" />
+          <ScalarProperty Name="work" ColumnName="work" />
+          <ScalarProperty Name="personal" ColumnName="personal" />
+          <ScalarProperty Name="another" ColumnName="another" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

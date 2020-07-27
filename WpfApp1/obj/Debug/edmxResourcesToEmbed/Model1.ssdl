@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище ZapKnModel" Provider="Npgsql" ProviderManifestToken="12.3" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="email">
+    <Key>
+      <PropertyRef Name="emailid" />
+    </Key>
+    <Property Name="emailid" Type="int4" Nullable="false" />
+    <Property Name="personidfk" Type="int4" Nullable="false" />
+    <Property Name="typeeidfk" Type="int4" Nullable="false" />
+    <Property Name="email" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="person">
+    <Key>
+      <PropertyRef Name="personid" />
+    </Key>
+    <Property Name="personid" Type="int4" Nullable="false" />
+    <Property Name="photoidfk" Type="int4" Nullable="false" />
+    <Property Name="surname" Type="text" Nullable="false" />
+    <Property Name="firstname" Type="text" Nullable="false" />
+    <Property Name="patronymic" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="phone">
+    <Key>
+      <PropertyRef Name="phoneid" />
+    </Key>
+    <Property Name="phoneid" Type="int4" Nullable="false" />
+    <Property Name="personidfk" Type="int4" Nullable="false" />
+    <Property Name="typepidfk" Type="int4" Nullable="false" />
+    <Property Name="phonenumber" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="photo">
+    <Key>
+      <PropertyRef Name="photoid" />
+    </Key>
+    <Property Name="photoid" Type="int4" Nullable="false" />
+    <Property Name="photo" Type="bytea" Nullable="false" />
+  </EntityType>
+  <EntityType Name="typeemail">
+    <Key>
+      <PropertyRef Name="typeeid" />
+    </Key>
+    <Property Name="typeeid" Type="int4" Nullable="false" />
+    <Property Name="work" Type="bool" Nullable="false" />
+    <Property Name="personal" Type="bool" Nullable="false" />
+    <Property Name="another" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="typephone">
+    <Key>
+      <PropertyRef Name="typepid" />
+    </Key>
+    <Property Name="typepid" Type="int4" Nullable="false" />
+    <Property Name="work" Type="bool" Nullable="false" />
+    <Property Name="personal" Type="bool" Nullable="false" />
+    <Property Name="another" Type="bool" Nullable="false" />
+  </EntityType>
+  <Association Name="email_personidfk_foreign">
+    <End Role="person" Type="Self.person" Multiplicity="1" />
+    <End Role="email" Type="Self.email" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="person">
+        <PropertyRef Name="personid" />
+      </Principal>
+      <Dependent Role="email">
+        <PropertyRef Name="personidfk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="email_typeeidfk_foreign">
+    <End Role="typeemail" Type="Self.typeemail" Multiplicity="1" />
+    <End Role="email" Type="Self.email" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="typeemail">
+        <PropertyRef Name="typeeid" />
+      </Principal>
+      <Dependent Role="email">
+        <PropertyRef Name="typeeidfk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="person_photoidfk_foreign">
+    <End Role="photo" Type="Self.photo" Multiplicity="1" />
+    <End Role="person" Type="Self.person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="photo">
+        <PropertyRef Name="photoid" />
+      </Principal>
+      <Dependent Role="person">
+        <PropertyRef Name="photoidfk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="phone_personidfk_foreign">
+    <End Role="person" Type="Self.person" Multiplicity="1" />
+    <End Role="phone" Type="Self.phone" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="person">
+        <PropertyRef Name="personid" />
+      </Principal>
+      <Dependent Role="phone">
+        <PropertyRef Name="personidfk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="phone_typepidfk_foreign">
+    <End Role="typephone" Type="Self.typephone" Multiplicity="1" />
+    <End Role="phone" Type="Self.phone" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="typephone">
+        <PropertyRef Name="typepid" />
+      </Principal>
+      <Dependent Role="phone">
+        <PropertyRef Name="typepidfk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище ZapKnModelContainer">
+    <EntitySet Name="email" EntityType="Self.email" Schema="public" store:Type="Tables" />
+    <EntitySet Name="person" EntityType="Self.person" Schema="public" store:Type="Tables" />
+    <EntitySet Name="phone" EntityType="Self.phone" Schema="public" store:Type="Tables" />
+    <EntitySet Name="photo" EntityType="Self.photo" Schema="public" store:Type="Tables" />
+    <EntitySet Name="typeemail" EntityType="Self.typeemail" Schema="public" store:Type="Tables" />
+    <EntitySet Name="typephone" EntityType="Self.typephone" Schema="public" store:Type="Tables" />
+    <AssociationSet Name="email_personidfk_foreign" Association="Self.email_personidfk_foreign">
+      <End Role="person" EntitySet="person" />
+      <End Role="email" EntitySet="email" />
+    </AssociationSet>
+    <AssociationSet Name="email_typeeidfk_foreign" Association="Self.email_typeeidfk_foreign">
+      <End Role="typeemail" EntitySet="typeemail" />
+      <End Role="email" EntitySet="email" />
+    </AssociationSet>
+    <AssociationSet Name="person_photoidfk_foreign" Association="Self.person_photoidfk_foreign">
+      <End Role="photo" EntitySet="photo" />
+      <End Role="person" EntitySet="person" />
+    </AssociationSet>
+    <AssociationSet Name="phone_personidfk_foreign" Association="Self.phone_personidfk_foreign">
+      <End Role="person" EntitySet="person" />
+      <End Role="phone" EntitySet="phone" />
+    </AssociationSet>
+    <AssociationSet Name="phone_typepidfk_foreign" Association="Self.phone_typepidfk_foreign">
+      <End Role="typephone" EntitySet="typephone" />
+      <End Role="phone" EntitySet="phone" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
